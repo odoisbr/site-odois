@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f0f0f;
+
+  /* oDois Brand Colors - Gradient Purple/Magenta */
+  --odois-purple-dark: #440060;
+  --odois-purple: #4D0064;
+  --odois-purple-medium: #65006F;
+  --odois-magenta: #8C0081;
+  --odois-magenta-vibrant: #910083;
+
+  /* Semantic Colors */
+  --odois-primary: #65006F;
+  --odois-primary-light: #8C0081;
+  --odois-primary-dark: #440060;
+
+  /* Neutrals */
+  --odois-white: #ffffff;
+  --odois-gray-50: #fafafa;
+  --odois-gray-100: #f5f5f5;
+  --odois-gray-200: #e5e5e5;
+  --odois-gray-300: #d4d4d4;
+  --odois-gray-400: #a3a3a3;
+  --odois-gray-500: #737373;
+  --odois-gray-600: #525252;
+  --odois-gray-700: #404040;
+  --odois-gray-800: #262626;
+  --odois-gray-900: #171717;
+  --odois-black: #0f0f0f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* oDois Colors */
+  --color-odois-purple-dark: var(--odois-purple-dark);
+  --color-odois-purple: var(--odois-purple);
+  --color-odois-purple-medium: var(--odois-purple-medium);
+  --color-odois-magenta: var(--odois-magenta);
+  --color-odois-magenta-vibrant: var(--odois-magenta-vibrant);
+  --color-odois-primary: var(--odois-primary);
+  --color-odois-primary-light: var(--odois-primary-light);
+  --color-odois-primary-dark: var(--odois-primary-dark);
+
+  /* Neutrals */
+  --color-odois-white: var(--odois-white);
+  --color-odois-gray-50: var(--odois-gray-50);
+  --color-odois-gray-100: var(--odois-gray-100);
+  --color-odois-gray-200: var(--odois-gray-200);
+  --color-odois-gray-300: var(--odois-gray-300);
+  --color-odois-gray-400: var(--odois-gray-400);
+  --color-odois-gray-500: var(--odois-gray-500);
+  --color-odois-gray-600: var(--odois-gray-600);
+  --color-odois-gray-700: var(--odois-gray-700);
+  --color-odois-gray-800: var(--odois-gray-800);
+  --color-odois-gray-900: var(--odois-gray-900);
+  --color-odois-black: var(--odois-black);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #440060 0%, #4D0064 20%, #65006F 54%, #8C0081 95%, #910083 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom gradient background utility */
+.gradient-bg {
+  background: linear-gradient(135deg, #440060 0%, #4D0064 20%, #65006F 54%, #8C0081 95%, #910083 100%);
+}
+
+/* Subtle gradient background */
+.gradient-bg-subtle {
+  background: linear-gradient(135deg, rgba(68, 0, 96, 0.05) 0%, rgba(145, 0, 131, 0.08) 100%);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--odois-primary);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(101, 0, 111, 0.2);
+  color: var(--foreground);
+}
+
+/* ===== Hero Animations ===== */
+
+/* Slow pulse for orbs */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse-slower {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.15);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.animate-pulse-slower {
+  animation: pulse-slower 12s ease-in-out infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-30px);
+  }
+}
+
+.animate-float {
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Floating particles */
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-particle {
+  animation: float-particle 20s linear infinite;
+}
+
+/* Word fade animation */
+@keyframes word-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.animate-word-fade {
+  animation: word-fade 3s ease-in-out;
+}
+
+/* Width expand for underline */
+@keyframes width-expand {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+.animate-width-expand {
+  animation: width-expand 3s ease-in-out infinite;
+  transform-origin: left;
+}
+
+/* Slow bounce */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Scroll indicator */
+@keyframes scroll-indicator {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-scroll-indicator {
+  animation: scroll-indicator 1.5s ease-in-out infinite;
+}
+
+/* Glow effect for buttons */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(101, 0, 111, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(145, 0, 131, 0.5);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
