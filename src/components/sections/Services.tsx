@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Code2,
   Smartphone,
@@ -8,115 +10,171 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const services = [
   {
     icon: Globe,
     title: "Desenvolvimento Web",
     description:
-      "Criamos sistemas web sob medida: plataformas SaaS, portais corporativos e aplicações complexas com React e Next.js.",
+      "Plataformas SaaS, portais corporativos e aplicações complexas com React e Next.js. Código limpo, SEO sólido, performance real.",
     features: ["React & Next.js", "Node.js", "APIs RESTful", "SEO otimizado"],
   },
   {
     icon: Smartphone,
     title: "Aplicativos Mobile",
     description:
-      "Desenvolvimento de aplicativos mobile para iOS e Android com React Native. Apps profissionais que engajam usuários.",
+      "Apps iOS e Android com React Native. Profissionais, performáticos e com UX nativa que engaja e retém usuários.",
     features: ["React Native", "iOS & Android", "UI/UX nativo", "Push notifications"],
   },
   {
     icon: Database,
     title: "Sistemas sob Demanda",
     description:
-      "Software personalizado para gestão empresarial: ERPs, CRMs e sistemas de automação desenvolvidos sob medida.",
+      "ERPs, CRMs e sistemas de automação desenvolvidos sob medida. Sem código genérico, sem gambiarras — só o que o seu processo precisa.",
     features: ["Arquitetura escalável", "Integrações", "Dashboards", "Automação"],
   },
   {
     icon: Cloud,
     title: "Cloud & DevOps",
     description:
-      "Infraestrutura cloud robusta na AWS e GCP com práticas DevOps para escalabilidade e alta disponibilidade.",
+      "Infraestrutura robusta na AWS e GCP com práticas DevOps para escalar sem dor. CI/CD, monitoramento e alta disponibilidade.",
     features: ["AWS & GCP", "CI/CD", "Monitoramento", "Segurança"],
   },
   {
     icon: Code2,
     title: "APIs & Integrações",
     description:
-      "Desenvolvimento de APIs REST e GraphQL e integrações com sistemas terceiros para conectar seu ecossistema digital.",
+      "APIs REST e GraphQL e integrações com sistemas terceiros para conectar seu ecossistema digital em um fluxo único e coerente.",
     features: ["REST & GraphQL", "Webhooks", "Microservices", "Documentação"],
   },
   {
     icon: Lightbulb,
     title: "Consultoria Técnica",
     description:
-      "Orientação estratégica para decisões tecnológicas: do MVP ao product-market fit, definimos o melhor caminho.",
+      "Do MVP ao product-market fit: definimos o melhor caminho técnico para que você gaste tempo e dinheiro no que realmente importa.",
     features: ["Discovery de produto", "Roadmap", "Code review", "Mentoria"],
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 28, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.55, ease: EASE },
+  },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.65, ease: EASE },
+  },
+};
+
 export function Services() {
   return (
-    <section id="servicos" className="py-24 bg-white">
+    <section id="servicos" className="py-24 bg-odois-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-odois-primary font-semibold text-sm uppercase tracking-wider">
+        {/* Cabeçalho com statement grande */}
+        <motion.div
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="max-w-3xl mb-16"
+        >
+          <motion.span
+            variants={headingVariants}
+            className="text-odois-primary font-semibold text-sm uppercase tracking-wider"
+          >
             Nossos Serviços
-          </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-odois-gray-900">
-            Desenvolvimento de software{" "}
-            <span className="gradient-text">sob medida</span> para o seu negócio
-          </h2>
-          <p className="mt-4 text-lg text-odois-gray-600">
-            Da ideia à implementação, nossa software house oferece todo o suporte
-            para transformar seu projeto em um produto digital de alta performance.
-          </p>
-        </div>
+          </motion.span>
+          <motion.h2
+            variants={headingVariants}
+            className="mt-3 text-4xl sm:text-5xl font-bold text-odois-gray-900 leading-tight"
+          >
+            Tudo que você precisa
+            <br />
+            <span className="text-odois-primary-light">
+              para construir e escalar.
+            </span>
+          </motion.h2>
+          <motion.p
+            variants={headingVariants}
+            className="mt-5 text-lg text-odois-gray-600 leading-relaxed"
+          >
+            Da ideia à implementação, suporte técnico completo para transformar
+            seu projeto em um produto digital que gera resultado.
+          </motion.p>
+        </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Lista numerada com stagger — quebra a grade idêntica */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-10"
+        >
           {services.map((service, index) => (
-            <article
-              key={index}
-              className="group p-8 rounded-2xl border border-odois-gray-200 hover:border-odois-primary/30 hover:shadow-lg transition-all duration-300 bg-white"
-            >
-              <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <service.icon className="h-6 w-6 text-white" />
+            <motion.div key={service.title} variants={itemVariants} className="flex gap-5 group">
+              <span className="text-[2.75rem] font-bold text-odois-gray-200 tabular-nums leading-none select-none pt-0.5 flex-shrink-0 transition-colors duration-200 group-hover:text-odois-primary/25">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <service.icon className="h-[18px] w-[18px] text-odois-primary flex-shrink-0" />
+                  <h3 className="text-lg font-semibold text-odois-gray-900">
+                    {service.title}
+                  </h3>
+                </div>
+                <p className="text-odois-gray-600 leading-relaxed mb-3 text-[0.9375rem]">
+                  {service.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {service.features.map((feature) => (
+                    <span
+                      key={feature}
+                      className="text-xs font-medium text-odois-gray-500 bg-odois-gray-100 px-2.5 py-1 rounded-full"
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
               </div>
-
-              <h3 className="text-xl font-semibold text-odois-gray-900 mb-3">
-                {service.title}
-              </h3>
-
-              <p className="text-odois-gray-600 mb-6 leading-relaxed">
-                {service.description}
-              </p>
-
-              <ul className="space-y-2">
-                {service.features.map((feature, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-center text-sm text-odois-gray-500"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-odois-primary mr-2" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </article>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
+          className="mt-16 text-center"
+        >
           <Link
             href="#contato"
-            className="inline-flex items-center text-odois-primary font-semibold hover:text-odois-primary-dark transition-colors group"
+            className="inline-flex items-center text-odois-primary font-semibold hover:text-odois-primary-dark transition-colors duration-150 group"
           >
-            Fale sobre seu projeto
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            Orçamento gratuito para seu projeto
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-150 group-hover:translate-x-1" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
