@@ -86,7 +86,7 @@ export function Cases() {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -4, transition: { duration: 0.25, ease: EASE } }}
-              className="group bg-odois-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+              className="group bg-odois-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300"
             >
               {/* Placeholder visual */}
               <div
@@ -96,14 +96,6 @@ export function Cases() {
                   <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center">
                     <span className="text-white/90 text-3xl font-bold">
                       {caseItem.title.charAt(0)}
-                    </span>
-                  </div>
-                </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-odois-white rounded-full text-sm font-medium text-odois-gray-900">
-                      Ver detalhes
-                      <ExternalLink className="h-3.5 w-3.5" />
                     </span>
                   </div>
                 </div>
