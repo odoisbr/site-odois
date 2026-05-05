@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Linkedin, Instagram, Github, Mail, MapPin } from "lucide-react";
+import { Instagram, Mail, MapPin } from "lucide-react";
 
 const footerLinks = {
   servicos: [
@@ -18,9 +18,7 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://linkedin.com/company/odois", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com/odois", label: "Instagram" },
-  { icon: Github, href: "https://github.com/odois", label: "GitHub" },
+  { icon: Instagram, href: "https://www.instagram.com/odoisbr/", label: "Instagram" },
 ];
 
 export function Footer() {
@@ -43,22 +41,13 @@ export function Footer() {
             </Link>
             <p className="mt-4 text-odois-gray-400 text-sm leading-relaxed">
               Transformamos ideias em produtos digitais de alta performance.
+            </p>
+            <p className="mt-4 text-odois-gray-400 text-sm leading-relaxed">
               Desenvolvimento de software com excelência e inovação.
             </p>
-            <div className="flex gap-4 mt-6">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-odois-gray-800 hover:bg-odois-primary transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-5 w-5" />
-                </a>
-              ))}
-            </div>
+            <p className="mt-4 text-odois-gray-400 text-sm leading-relaxed">
+              Do conceito ao código, construímos o futuro do seu negócio.
+            </p>
           </div>
 
           {/* Serviços */}
@@ -115,6 +104,26 @@ export function Footer() {
                 </span>
               </li>
             </ul>
+            <div className="flex items-center gap-4 mt-6">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // Removemos o justify-between e aumentamos um pouco a largura (w-48) para o efeito ficar mais visível
+                  className="flex items-center w-56 p-3 rounded-lg bg-odois-gray-800 hover:bg-odois-primary transition-colors"
+                  aria-label={social.label}
+                  title={social.label}
+                >
+                  <p className="font-medium text-white">Siga-nos no Instagram</p>
+                  
+                  <div className="flex-1 flex justify-center">
+                    <social.icon className="h-5 w-5" />
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

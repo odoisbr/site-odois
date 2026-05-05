@@ -162,9 +162,7 @@ const organizationSchema = {
     availableLanguage: ["Portuguese"],
   },
   sameAs: [
-    "https://www.linkedin.com/company/odois",
-    "https://www.instagram.com/odois",
-    "https://github.com/odois",
+    "https://www.instagram.com/odoisbr/",
   ],
   areaServed: {
     "@type": "Country",
