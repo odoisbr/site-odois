@@ -45,7 +45,7 @@ export function Header() {
           {/* Logo — inverte para branco sobre hero escuro */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/odois-logo.svg"
+              src="odois-logo.svg"
               alt="oDois — Desenvolvimento de Software"
               width={120}
               height={36}

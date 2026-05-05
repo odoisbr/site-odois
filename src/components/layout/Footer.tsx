@@ -32,7 +32,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/">
               <Image
-                src="/odois-logo.svg"
+                src="odois-logo.svg"
                 alt="oDois"
                 width={100}
                 height={30}
